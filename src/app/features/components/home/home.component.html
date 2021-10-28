@@ -1,0 +1,83 @@
+<div class="container px-4">
+  <div class="row gx-5" style="margin-top: 10rem">
+    <div class="p-3 border bg-light">
+      <div class="col"></div>
+      <div class="col">
+
+        <div class="row">
+          <div class="col">
+            <div class="p-3 border bg-light">
+              <input type="file" class="file-input"
+                     (change)="onFileSelected($event)" multiple #fileUpload>
+
+              <div class="file-upload">
+
+                {{title || "No file uploaded yet."}}
+
+                <button class="btn btn-outline-warning m-2" (click)="fileUpload.click()">
+                  <i class="fas fa-arrow-circle-up fa-2x"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col">
+            <div class="btn-group" role="group">
+              <button type="button" class="btn btn-warning" (click)="runDefaultTest()">Default test</button>
+              <a class="btn btn-outline-danger" role="button" [href]="fileUrl" [download]="filename">Download Results</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="row p-3">
+          <table class="table table-striped" *ngIf="results">
+            <thead>
+            <tr>
+              <th scope="col">Identificatore PEC</th>
+              <th scope="col">ID Titolario</th>
+              <th scope="col">Denominazione Titolario</th>
+              <th scope="col">Area Competenza Assegnatario</th>
+              <th scope="col">Data</th>
+              <th scope="col">Identificatore messaggio di errore</th>
+              <th scope="col">Codice errore</th>
+              <th scope="col">Messaggio di errore</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let result of results">
+              <td>{{result.PecId}}</td>
+              <td>{{result.ClassificationId}}</td>
+              <td>{{result.ClassificationDesc}}</td>
+              <td>{{result.Ass_competenza}}</td>
+              <td>{{result.SubmittedAt}}</td>
+              <td>{{result.MessageID}}</td>
+              <td>{{result.ErrorCode}}</td>
+              <td>{{result.Error_Message}}</td>
+            </tr>
+            <tr>
+              <td>PecId</td>
+              <td>ClassificationId</td>
+              <td>ClassificationDesc</td>
+              <td>Ass_competenza</td>
+              <td>SubmittedAt</td>
+              <td>MessageID</td>
+              <td>ErrorCode</td>
+              <td>Error_Message</td>
+            </tr>
+            <tr>
+              <td>PecId</td>
+              <td>ClassificationId</td>
+              <td>ClassificationDesc</td>
+              <td>Ass_competenza</td>
+              <td>SubmittedAt</td>
+              <td>MessageID</td>
+              <td>ErrorCode</td>
+              <td>Error_Message</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+</div>
