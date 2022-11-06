@@ -44,7 +44,7 @@ export class HomeComponent implements OnInit {
   onFileSelected(event: Event) {
     let input = event.target as HTMLInputElement
     console.log(input.files)
-    if (input.files != null) {
+    if (input.files !== null) {
       this.mailStorage.reset();
       this.title = input.files.length > 1 ? 'Multiple files selected' : input.files[0].name;
       // for every file send the email to the IL
