@@ -51,7 +51,7 @@ export class HomeComponent implements OnInit {
       for (let index = 0; index < input.files.length; index++) {
         let file = input.files.item(index)
         if (file)
-          this.mailService.sendPec(index + 1 + '' , file.name, file);
+          this.mailService.sendPec(String(index + 1) , file.name, file);
       }
       this.elaborateResults();
     }
@@ -64,7 +64,7 @@ export class HomeComponent implements OnInit {
     // send every email to IL
     for (let mailName in this.mails) {
       this.http.get<File>('/assets/mails' + mailName + '.eml').subscribe(mail => {
-        this.mailService.sendPec(id + '', mailName,  mail);
+        this.mailService.sendPec(String(id), mailName,  mail);
       });
       id++
     }
